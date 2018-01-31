@@ -44,18 +44,20 @@ int main(void)
 			{ //nappia painettu
 				toggle ^= 1;
 				if(toggle)
-				{
-					PORTB = 0b000000001; //set eka high
-				}
-				else
-				{
-					PORTB = 0b000000010; //unset toka;
-				}
+			{
+				PORTB |= (0x01 << 0); //set eka high
+				PORTB &= ~(0x01 << 1);
+			}
+			else
+			{
+				PORTB |= (0x01 << 1); //set eka high
+				PORTB &= ~(0x01 << 0);
+			}
 			}
 		}
 
 		lastState = state;
-		_delay_ms(20);
+	//	_delay_ms(20);
 	}
 }
 
